@@ -1,0 +1,17 @@
+name: ReportEvent
+on: [push]
+
+jobs:
+  Report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://devops-events.azurewebsites.net/api/DevOpsEvent?name=Morgan'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: $GITHUB_SHA
+
+
+        
+        
